@@ -1,13 +1,17 @@
 # A simple Local Storage API
 
-Supports objects, arrays, strings and numbers
+Supports objects, arrays, strings and numbers.
+
+A modular version is in the works.
  
 ## Usage
+
+Add `<script src="ls.js"></script>` to your page.
 
 ### Initialize LS instance
 
 Call `new LS(settings)` with an object argument which contains at least the endpoint
-property set
+property set.
 
 ```javascript
 var ls = new LS({
@@ -58,7 +62,7 @@ ls.update();
 
 ### Get instance and Local Storage data
 
-callback function is optional
+callback function is optional.
 
 ```javascript
 var ls = new LS({

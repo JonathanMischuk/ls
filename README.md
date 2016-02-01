@@ -129,7 +129,7 @@ ls.storageItem = {
 
 ### Cleanup
 
-I'm currently working on object cleanup after removal.
+I'm currently working on some better object cleanup methods after removal.
 
 ## Comments
 

@@ -20,6 +20,15 @@ var ls = new LS({
 });
 ```
 
+### Methods
+
+```javascript
+ls.prototype.set()
+ls.prototype.get() | ls.prototype.find()
+ls.prototype.update() | ls.prototype.save()
+ls.prototype.remove() | ls.prototype.delete()
+```
+
 ### Set instance and Local Storage data
 
 ```javascript

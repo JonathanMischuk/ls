@@ -36,63 +36,69 @@ ls.set(something);
 
 ### Update instance and Local Storage data
 
-    var ls = new LS({
-            storageType: 'localStorage'
-            endpoint: '/api/pages'
-            expires: 50000
-        }),
-        something = {
-            title: 'Something',
-            content: 'This is some content',
-            somethingElse: 'Something else'
-        };
-    
-    ls.set(something);
-    
-    ls.storageItem.data = {};
-    
-    ls.update();
-    // ls.storageItem.data === {}
+```javascript
+var ls = new LS({
+        storageType: 'localStorage'
+        endpoint: '/api/pages'
+        expires: 50000
+    }),
+    something = {
+        title: 'Something',
+        content: 'This is some content',
+        somethingElse: 'Something else'
+    };
+
+ls.set(something);
+
+ls.storageItem.data = {};
+
+ls.update();
+// ls.storageItem.data === {}
+```
 
 ### Get instance and Local Storage data
 
 callback function is optional
 
-    var ls = new LS({
-            storageType: 'localStorage'
-            endpoint: '/api/pages'
-            expires: 50000
-        }),
-        something = {
-            title: 'Something',
-            content: 'This is some content',
-            somethingElse: 'Something else'
-        };
-    
-    ls.set(something);
-    
-    ls.get(function (s) {
-        s.storageItem.data.title = 'Something Else';
-        s.update();
-    });
-    
-    // or
-    
-    var s = ls.get();
+```javascript
+var ls = new LS({
+        storageType: 'localStorage'
+        endpoint: '/api/pages'
+        expires: 50000
+    }),
+    something = {
+        title: 'Something',
+        content: 'This is some content',
+        somethingElse: 'Something else'
+    };
+
+ls.set(something);
+
+ls.get(function (s) {
+    s.storageItem.data.title = 'Something Else';
+    s.update();
+});
+
+// or
+
+var s = ls.get();
+```
     
 ### Remove Local Storage from browser
 
-    var ls = new LS({
-            storageType: 'localStorage'
-            endpoint: '/api/pages'
-            expires: 50000
-        }),
-        something = {
-            title: 'Something',
-            content: 'This is some content',
-            somethingElse: 'Something else'
-        };
-    
-    ls.set(something);
-    
-    ls.remove();
+```javascript
+var ls = new LS({
+        storageType: 'localStorage'
+        endpoint: '/api/pages'
+        expires: 50000
+    }),
+    something = {
+        title: 'Something',
+        content: 'This is some content',
+        somethingElse: 'Something else'
+    };
+
+ls.set(something);
+
+ls.remove();
+```

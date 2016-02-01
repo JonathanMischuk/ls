@@ -127,6 +127,14 @@ ls.storageItem = {
 }
 ```
 
+### Cleanup
+
+I'm currently working on object cleanup after removal.
+
+### Comments
+
+Please let me know if you experience any issues so they can be fixed up.
+
 ## Author
 
 The original author of LS is Jonathan Mischuk

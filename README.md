@@ -131,7 +131,7 @@ ls.storageItem = {
 
 I'm currently working on object cleanup after removal.
 
-### Comments
+## Comments
 
 Please let me know if you experience any issues so they can be fixed up.
 

@@ -75,12 +75,6 @@
     }
 
     document.getElementById('set').addEventListener('click', function () {
-        pagesLS = new LS({
-            storageType: 'localStorage',
-            endpoint: '/api/pages',
-            expires: 20000
-        });
-
         pagesLS.set(pagesCollection);
 
         document.getElementById('title-html').innerHTML = pagesLS.storageItem.data.title;

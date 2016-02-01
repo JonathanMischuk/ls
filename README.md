@@ -1,6 +1,6 @@
-# A small Local Storage framework
+# A simple Local Storage API
 
-Supports objects and arrays
+Supports objects, arrays, strings and numbers
  
 ## Usage
 

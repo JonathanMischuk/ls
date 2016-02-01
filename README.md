@@ -61,7 +61,7 @@ ls.update();
 
 ### Get instance and Local Storage data
 
-callback function is optional.
+Callback function is optional.
 
 ```javascript
 var ls = new LS({

@@ -106,6 +106,6 @@ ls.set(something);
 ls.remove();
 ```
 
-### Author
+## Author
 
 The original author of LS is Jonathan Mischuk

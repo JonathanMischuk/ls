@@ -63,7 +63,7 @@
         pagesLS = new LS({
             storageType: 'localStorage',
             endpoint: '/api/pages',
-            expires: 20000
+            expires: 20000    // 20 second expiry
         });
 
     if (!pagesLS.storageItem.data) {

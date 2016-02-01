@@ -10,8 +10,7 @@ Add `<script src="ls.js"></script>` to your page.
 
 ### Initialize LS instance
 
-Call `new LS(settings)` with an object argument which contains at least the endpoint
-property set.
+Call `new LS(settings)` - 'settings' is an object. The 'endpoint' property must be set.
 
 ```javascript
 var ls = new LS({

@@ -122,7 +122,7 @@ The main data containment object is `ls.storageItem`. The output is the followin
 ```javascript
 ls.storageItem = {
     endpoint: String,
-    dataCreated: Number,
+    dateCreated: Number,
     data: Object|Array|String|Number
 }
 ```

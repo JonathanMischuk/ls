@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Local Storage API</title>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script src="ls.js"></script>
+
+    <style>
+        form {
+            margin-top: 30px;
+        }
+        .primary-menu {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <nav class="primary-menu">
+        <div class="nav-wrapper">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="page.html">Page</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <a class="btn" id="set">Set</a>
+    <a class="btn" id="remove">Remove</a>
+
+    <form>
+        <h6>
+            Fill out the form fields below and click the update button to update storage
+            and instance data
+        </h6>
+
+        <label>Title</label>
+        <input type="text" id="title" />
+
+        <label>Content</label>
+        <textarea class="materialize-textarea" id="content"></textarea>
+
+        <a class="btn" id="update">Update</a>
+    </form>
+
+    <div class="content">
+        <h3 id="title-html"></h3>
+        <p id="content-html"></p>
+    </div>
+</div>
+
+<script>
+    var pagesCollection = {
+            title: 'Home',
+            content: 'This is the home page'
+        },
+        pagesLS = new LS({
+            storageType: 'localStorage',
+            endpoint: '/api/pages',
+            expires: 20000
+        });
+
+    if (!pagesLS.storageItem.data) {
+        document.getElementById('title-html').innerHTML = '';
+        document.getElementById('content-html').innerHTML = '';
+    } else {
+        document.getElementById('title-html').innerHTML = pagesLS.storageItem.data.title;
+        document.getElementById('content-html').innerHTML = pagesLS.storageItem.data.content;
+    }
+
+    document.getElementById('set').addEventListener('click', function () {
+        pagesLS.set(pagesCollection);
+
+        document.getElementById('title-html').innerHTML = pagesLS.storageItem.data.title;
+        document.getElementById('content-html').innerHTML = pagesLS.storageItem.data.content;
+    });
+
+    document.getElementById('remove').addEventListener('click', function () {
+        pagesLS.remove();
+
+        document.getElementById('title-html').innerHTML = '';
+        document.getElementById('content-html').innerHTML = '';
+    });
+
+    document.getElementById('update').addEventListener('click', function () {
+        pagesLS.get(function (pages) {
+            pages.storageItem.data.title = document.getElementById('title').value;
+            pages.storageItem.data.content = document.getElementById('content').value;
+            pages.update();
+
+            document.getElementById('title-html').innerHTML = pages.storageItem.data.title;
+            document.getElementById('content-html').innerHTML = pages.storageItem.data.content;
+        });
+    });
+
+</script>
+
+</body>
+</html>

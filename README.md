@@ -9,11 +9,13 @@ Supports objects and arrays
 Call `new LS(settings)` with an object argument which contains at least the endpoint
 property set
 
-    var ls = new LS({
-        storageType: 'localStorage' || 'sessionStorage' // String | optional | default 'localStorage'
-        endpoint: '/api/pages'                          // String | mandatory | default undefined
-        expires: 50000                                  // Number | optional | milliseconds | default undefined
-    });
+```javascript
+var ls = new LS({
+    storageType: 'localStorage' || 'sessionStorage' // String | optional | default 'localStorage'
+    endpoint: '/api/pages'                          // String | mandatory | default undefined
+    expires: 50000                                  // Number | optional | milliseconds | default undefined
+});
+```
 
 ### Set instance and Local Storage data
 

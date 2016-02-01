@@ -1,4 +1,4 @@
-# A simple HTML5 Local Storage / Session Storage API
+# LS - A simple HTML5 Local Storage / Session Storage API
 
 Supports objects, arrays, strings and numbers.
 

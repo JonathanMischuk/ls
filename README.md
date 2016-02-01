@@ -106,6 +106,18 @@ ls.set(something);
 ls.remove();
 ```
 
+### ls.storageItem
+
+The main data containment object is `ls.storageItem`. The output is the following:
+
+```javascript
+ls.storageItem = {
+    endpoint: String,
+    dataCreated: Number,
+    data: Object|Array|String|Number
+}
+```
+
 ## Author
 
 The original author of LS is Jonathan Mischuk

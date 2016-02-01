@@ -19,18 +19,20 @@ var ls = new LS({
 
 ### Set instance and Local Storage data
 
-    var ls = new LS({
-            storageType: 'localStorage'
-            endpoint: '/api/pages'
-            expires: 50000
-        }),
-        something = {
-            title: 'Something',
-            content: 'This is some content',
-            somethingElse: 'Something else'
-        };
-    
-    ls.set(something);
+```javascript
+var ls = new LS({
+        storageType: 'localStorage'
+        endpoint: '/api/pages'
+        expires: 50000
+    }),
+    something = {
+        title: 'Something',
+        content: 'This is some content',
+        somethingElse: 'Something else'
+    };
+
+ls.set(something);
+```
 
 ### Update instance and Local Storage data
 

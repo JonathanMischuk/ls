@@ -129,10 +129,14 @@ var ls = new LS({
         content: 'This is some content',
         somethingElse: 'Something else'
     };
+    
+ls.check();
+// false
 
 ls.set(something);
 
 ls.check();
+// true
 ```
 
 ### ls.storageItem

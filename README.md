@@ -24,6 +24,7 @@ var ls = new LS({
 
 ```javascript
 LS.prototype.set()
+LS.prototype.check()
 LS.prototype.get() | LS.prototype.find()
 LS.prototype.update() | LS.prototype.save()
 LS.prototype.remove() | LS.prototype.delete()
@@ -113,6 +114,25 @@ var ls = new LS({
 ls.set(something);
 
 ls.remove();
+```
+
+### Check if Local Storage data exists
+
+```javascript
+var ls = new LS({
+        storageType: 'localStorage'
+        endpoint: '/api/pages'
+        expires: 50000
+    }),
+    something = {
+        title: 'Something',
+        content: 'This is some content',
+        somethingElse: 'Something else'
+    };
+
+ls.set(something);
+
+ls.check();
 ```
 
 ### ls.storageItem

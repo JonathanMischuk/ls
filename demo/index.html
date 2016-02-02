@@ -66,6 +66,8 @@
         expires: 20000    // 20 second expiry
     });
 
+    console.log(pagesLS.check());
+
     if (pagesLS.storageItem && pagesLS.storageItem.data) {
         document.getElementById('title-html').innerHTML = pagesLS.storageItem.data.title;
         document.getElementById('content-html').innerHTML = pagesLS.storageItem.data.content;

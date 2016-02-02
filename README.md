@@ -74,7 +74,7 @@ ls.update(true);
 
 ### Get instance and Local Storage data
 
-Callback function is optional.
+Asynchronous callback function is optional.
 
 ```javascript
 var ls = new LS({
@@ -90,6 +90,7 @@ var ls = new LS({
 
 ls.set(something);
 
+// asynchronous callback
 ls.get(function (s) {
     s.storageItem.data.title = 'Something Else';
     s.update();

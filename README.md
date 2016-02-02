@@ -67,6 +67,9 @@ ls.storageItem.data = {};
 
 ls.update();
 // ls.storageItem.data === {}
+
+ls.update(true);
+// updates dateCreated timestamp (useful for storage with expiry)
 ```
 
 ### Get instance and Local Storage data

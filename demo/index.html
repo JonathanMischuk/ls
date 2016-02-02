@@ -63,7 +63,7 @@
     pagesLS = new LS({
         storageType: 'localStorage',
         endpoint: '/api/pages',
-        expires: 20000    // 20 second expiry
+        expires: 10000    // 20 second expiry
     });
 
     console.log(pagesLS.check());
@@ -94,7 +94,7 @@
         pagesLS.get(function (pages) {
             pages.storageItem.data.title = document.getElementById('title').value;
             pages.storageItem.data.content = document.getElementById('content').value;
-            pages.update();
+            pages.update(true);
 
             document.getElementById('title-html').innerHTML = pages.storageItem.data.title;
             document.getElementById('content-html').innerHTML = pages.storageItem.data.content;

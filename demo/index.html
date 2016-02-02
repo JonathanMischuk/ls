@@ -92,6 +92,8 @@
 
     document.getElementById('update').addEventListener('click', function () {
         pagesLS.get(function (pages) {
+            console.log('1');
+
             pages.storageItem.data.title = document.getElementById('title').value;
             pages.storageItem.data.content = document.getElementById('content').value;
 
@@ -100,6 +102,8 @@
             document.getElementById('title-html').innerHTML = pages.storageItem.data.title;
             document.getElementById('content-html').innerHTML = pages.storageItem.data.content;
         });
+
+        console.log('2');
     });
 
 </script>

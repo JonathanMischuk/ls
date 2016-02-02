@@ -1,4 +1,5 @@
 .idea
 localStorageAPI.iml
 lib/ls-2.js
+lib/module
 demo-2

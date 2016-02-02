@@ -29,7 +29,7 @@ LS.prototype.update() | LS.prototype.save()
 LS.prototype.remove() | LS.prototype.delete()
 ```
 
-### Set instance and Local Storage data
+### Create instance and set Local Storage data
 
 ```javascript
 var ls = new LS({

@@ -46,7 +46,7 @@ something = {
 
 ls.set(something);
 
-// with callback
+// with callback function
 ls.set(something, function (response) {
     console.log(response);    
 });
@@ -63,7 +63,7 @@ ls.set(something).then(function (response) {
 * Has optional callback function with storage data parameter
 
 ```javascript
-// with callback
+// with callback function
 ls.get(function (response) {
     response.title = 'Something Else';
     ls.update();

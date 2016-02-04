@@ -1,4 +1,4 @@
-# LS - A simple HTML5 Local Storage / Session Storage API
+# LS - HTML5 Local Storage / Session Storage API
 
 A promise and callback based library.
 

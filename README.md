@@ -51,7 +51,7 @@ ls.set(something, function (response) {
     console.log(response);    
 });
 
-// using promise
+// as promise
 ls.set(something).then(function (response) {
     console.log(response);
 });

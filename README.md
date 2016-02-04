@@ -73,6 +73,9 @@ ls.get(function (response) {
 // as promise
 ls.get().then(function (response) {
     response.title = 'Something Else';
+    return response;
+}).then(function (secondResponse) {
+    secondResponse.content = 'Some more body content for some reason';
     ls.update();
 });
 ```

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-    <script src="../lib/ls-2.js"></script>
+    <script src="../lib/ls.js"></script>
 
     <style>
         form {
@@ -46,19 +46,20 @@
         expires: 20000
     });
 
-    if (!pagesLS.storageItem.data) {
-        document.getElementById('title-html').innerHTML = '';
-        document.getElementById('content-html').innerHTML = '';
-    } else {
-        document.getElementById('title-html').innerHTML = pagesLS.storageItem.data.title;
-        document.getElementById('content-html').innerHTML = pagesLS.storageItem.data.content;
-    }
+    pagesLS.get(function (response) {
+        if (response.error) {
+            document.getElementById('content-html').innerHTML = response.error.message;
+        } else {
+            document.getElementById('title-html').innerHTML = response.title;
+            document.getElementById('content-html').innerHTML = response.content;
+        }
+    });
 
     document.getElementById('remove').addEventListener('click', function () {
         pagesLS.remove();
 
         document.getElementById('title-html').innerHTML = '';
-        document.getElementById('content-html').innerHTML = '';
+        document.getElementById('content-html').innerHTML = 'Endpoint does not exist';
     });
 
 </script>

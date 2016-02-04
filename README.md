@@ -6,7 +6,7 @@ A modular version is in the works.
  
 ## Usage
 
-Add `<script src="ls.js"></script>` to your page.
+Add `<script src="ls-v.1.0.1.js"></script>` to your page.
 
 ### Initialize LS instance
 
@@ -122,6 +122,14 @@ ls.remove();
 
 ### Check if Local Storage data exists
 
+Callback function is optional.
+
+Callback parameters:
+ 
+function (instance, data)
+@param instance {Constructor} this
+@param data {Object} this.storageItem.data
+
 ```javascript
 var ls = new LS({
         storageType: 'localStorage'
@@ -141,6 +149,10 @@ ls.set(something);
 
 ls.check();
 // true
+
+ls.check(function (instance, data) {
+    
+});
 ```
 
 ### ls.storageItem

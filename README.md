@@ -63,7 +63,7 @@ ls.set(something).then(function (response) {
 * Has optional callback function with storage data parameter
 
 ```javascript
-//with callback
+// with callback
 ls.get(function (response) {
     response.title = 'Something Else';
     ls.update();

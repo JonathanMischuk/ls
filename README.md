@@ -1,5 +1,7 @@
 # LS - A simple HTML5 Local Storage / Session Storage API
 
+A promise and callback based library.
+
 Supports objects, arrays, strings and numbers.
 
 A modular version is in the works.
@@ -30,118 +32,106 @@ LS.prototype.update() | LS.prototype.save()
 LS.prototype.remove() | LS.prototype.delete()
 ```
 
-### Create instance and set Local Storage data
+### Set instance and Local Storage data 
+
+* Returns a promise with storage data as value or error object
+* Has optional callback function with response parameter
 
 ```javascript
-var ls = new LS({
-        storageType: 'localStorage'
-        endpoint: '/api/pages'
-        expires: 50000
-    }),
-    something = {
-        title: 'Something',
-        content: 'This is some content',
-        somethingElse: 'Something else'
-    };
-
-ls.set(something);
-```
-
-### Update instance and Local Storage data
-
-```javascript
-var ls = new LS({
-        storageType: 'localStorage'
-        endpoint: '/api/pages'
-        expires: 50000
-    }),
-    something = {
-        title: 'Something',
-        content: 'This is some content',
-        somethingElse: 'Something else'
-    };
+something = {
+    title: 'Something',
+    content: 'This is some content',
+    somethingElse: 'Something else'
+};
 
 ls.set(something);
 
-ls.storageItem.data = {};
+// with callback
+ls.set(something, function (response) {
+    console.log(response);    
+});
 
-ls.update();
-// ls.storageItem.data === {}
-
-ls.update(true);
-// updates dateCreated timestamp (useful for storage with expiry)
+// using promise
+ls.set(something).then(function (response) {
+    console.log(response);
+});
 ```
 
 ### Get instance and Local Storage data
 
-Asynchronous callback function is optional.
+* Returns a promise with storage data as value or error object
+* Has optional callback function with storage data parameter
 
 ```javascript
-var ls = new LS({
-        storageType: 'localStorage'
-        endpoint: '/api/pages'
-        expires: 50000
-    }),
-    something = {
-        title: 'Something',
-        content: 'This is some content',
-        somethingElse: 'Something else'
-    };
-
-ls.set(something);
-
-// asynchronous callback
-ls.get(function (s) {
-    s.storageItem.data.title = 'Something Else';
-    s.update();
+ls.get(function (response) {
+    response.title = 'Something Else';
+    ls.update();
 });
 
 // or
 
-var s = ls.get();
+ls.get().then(function (response) {
+    response.title = 'Something Else';
+    ls.update();
+});
+```
+
+Convenience version - only retrieves storage data
+
+```javascript
+var storage = ls.$get();
+```
+
+### Update instance and Local Storage data
+
+* Returns a promise with storage data as value or error object
+* Has optional callback function with storage data parameter
+
+```javascript
+ls.get(function (response) {
+    response.title = 'Something Completely Different';
+    
+    ls.update();
+    
+    // updates dateCreated timestamp (useful for storage with expiry)
+    ls.update(true);
+    
+    // with callback function
+    ls.update(true, function (response) {
+        console.log(response);
+    });
+    
+    // as promise
+    ls.update(true).then(function (response) {
+        console.log(response);
+    });    
+});
 ```
     
 ### Remove Local Storage from browser
 
+* Returns a promise with 'this' as value, or error object
+* Has optional callback function with 'this' as value, or error object
+
 ```javascript
-var ls = new LS({
-        storageType: 'localStorage'
-        endpoint: '/api/pages'
-        expires: 50000
-    }),
-    something = {
-        title: 'Something',
-        content: 'This is some content',
-        somethingElse: 'Something else'
-    };
-
-ls.set(something);
-
 ls.remove();
+
+// with callback function
+ls.remove(function (response) {
+    console.log(response);
+});
+
+// as promise
+ls.remove().then(function (response) {
+    console.log(response);
+});
 ```
 
 ### Check if Local Storage data exists
 
-Callback function is optional.
+Returns Boolean value
 
-Callback parameters:
- 
-function (instance, data)
-@param instance {Constructor} this
-@param data {Object} this.storageItem.data
-
-```javascript
-var ls = new LS({
-        storageType: 'localStorage'
-        endpoint: '/api/pages'
-        expires: 50000
-    }),
-    something = {
-        title: 'Something',
-        content: 'This is some content',
-        somethingElse: 'Something else'
-    };
-    
+```javascript    
 ls.check();
 // false
 
@@ -149,27 +139,19 @@ ls.set(something);
 
 ls.check();
 // true
-
-ls.check(function (instance, data) {
-    
-});
 ```
 
-### ls.storageItem
+### returned storageItem object
 
-The main data containment object is `ls.storageItem`. The output is the following:
+The main data containment object has the following output:
 
 ```javascript
-ls.storageItem = {
+storageItem = {
     endpoint: String,
     dateCreated: Number,
     data: Object|Array|String|Number
 }
 ```
-
-### Cleanup
-
-I'm currently working on some better object cleanup methods after removal.
 
 ## Comments
 

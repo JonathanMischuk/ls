@@ -104,8 +104,8 @@ ls.get(function (response) {
     ls.update(response, true);
     
     // with callback function
-    ls.update(true, function (response) {
-        console.log(response, response);
+    ls.update(response, true, function (response) {
+        console.log(response);
     });
     
     // as promise

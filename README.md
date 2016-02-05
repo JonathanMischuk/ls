@@ -29,8 +29,11 @@ LS.prototype.set()
 LS.prototype.check()
 LS.prototype.$get()
 LS.prototype.get() | LS.prototype.find()
-LS.prototype.update() | LS.prototype.save()
-LS.prototype.remove() | LS.prototype.delete()
+
+LS.update()
+LS.remove()
+LS.getSettings()
+LS.updateInstanceStorage()
 ```
 
 ### Set instance and Local Storage data 

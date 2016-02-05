@@ -83,7 +83,7 @@ ls.get().then(function (response) {
 });
 ```
 
-Convenience version - only retrieves storage data
+Convenience version - no callback or promise returned 
 
 ```javascript
 var storage = ls.$get();
@@ -98,18 +98,18 @@ var storage = ls.$get();
 ls.get(function (response) {
     response.title = 'Something Completely Different';
     
-    ls.update();
+    ls.update(response);
     
     // updates dateCreated timestamp (useful for storage with expiry)
-    ls.update(true);
+    ls.update(response, true);
     
     // with callback function
     ls.update(true, function (response) {
-        console.log(response);
+        console.log(response, response);
     });
     
     // as promise
-    ls.update(true).then(function (response) {
+    ls.update(response, true).then(function (response) {
         console.log(response);
     });    
 });

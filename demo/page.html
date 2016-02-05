@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-    <script src="../lib/ls.js"></script>
+    <script src="../versions/ls-v.1.1.0.js"></script>
 
     <style>
         form {
@@ -46,12 +46,12 @@
         expires: 20000
     });
 
-    pagesLS.get(function (response) {
-        if (response.error) {
-            document.getElementById('content-html').innerHTML = response.error.message;
+    pagesLS.get(function (data) {
+        if (data.error) {
+            document.getElementById('content-html').innerHTML = data.error.message;
         } else {
-            document.getElementById('title-html').innerHTML = response.title;
-            document.getElementById('content-html').innerHTML = response.content;
+            document.getElementById('title-html').innerHTML = data.title;
+            document.getElementById('content-html').innerHTML = data.content;
         }
     });
 

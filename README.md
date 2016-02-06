@@ -28,14 +28,17 @@ var ls = new LS({
 
 #### Settings:
 
-* __storageType__: String (optional) | `'localStorage'` or `'sessionStorage'`
-* __endpoint__: String (mandatory) | `'example'`, `'somethingImportant'`
-* __expiry__: Object (optional)
+__storageType__: String (optional) | `'localStorage'` or `'sessionStorage'`
 
-__length__: Number (mandatory),  
+__endpoint__: String (mandatory) | `'example'`, `'somethingImportant'`
 
-__format__: String (optional) | `'seconds'`, `'minutes'`, `'hours'`, `'days'`  
-* __initAs__: Array / Object / String / Number | `[{ somethings: 'Orange' }, 5, 'Apple']`
+__expiry__: Object (optional)
+
+...__length__: Number (mandatory),  
+
+...__format__: String (optional) | `'seconds'`, `'minutes'`, `'hours'`, `'days'`  
+
+__initAs__: Array / Object / String / Number | `[{ somethings: 'Orange' }, 5, 'Apple']`
 
 ### Methods
 

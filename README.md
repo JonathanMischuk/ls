@@ -87,9 +87,10 @@ ls.get(function (res) {
 
 // as promise
 ls.get().then(function (res) {
-    return 'Something Else';
+    res.data.title = 'Something Else'; 
+    return res;
 }).then(function (res) {
-    res.data.title = res;
+    res.data.content = 'Some more content';
     ls.set(res.data);
 });
 ```

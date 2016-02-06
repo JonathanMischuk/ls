@@ -31,8 +31,8 @@ var ls = new LS({
 * __storageType__: String (optional) | `'localStorage'` or `'sessionStorage'`
 * __endpoint__: String (mandatory) | `'example'`, `'somethingImportant'`
 * __expiry__: Object (optional)
-...__length__: Number (mandatory),  
-...__format__: String (optional) | `'seconds'`, `'minutes'`, `'hours'`, `'days'`  
+... __length__: Number (mandatory),  
+... __format__: String (optional) | `'seconds'`, `'minutes'`, `'hours'`, `'days'`  
 * __initAs__: Array / Object / String / Number | `[{ somethings: 'Orange' }, 5, 'Apple']`
 
 ### Methods

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-    <script src="../lib/ls.js"></script>
+    <script src="../versions/ls.js"></script>
 
     <style>
         form {
@@ -41,17 +41,15 @@
 
 <script>
     var pagesLS = new LS({
-        storageType: 'localStorage',
-        endpoint: '/api/pages',
-        expires: 20000
+        endpoint: '/api/pages'
     });
 
-    pagesLS.get(function (response) {
-        if (response.error) {
-            document.getElementById('content-html').innerHTML = response.error.message;
+    pagesLS.get(function (res) {
+        if (res.error) {
+            document.getElementById('content-html').innerHTML = res.error.message;
         } else {
-            document.getElementById('title-html').innerHTML = response.title;
-            document.getElementById('content-html').innerHTML = response.content;
+            document.getElementById('title-html').innerHTML = res.data.title;
+            document.getElementById('content-html').innerHTML = res.data.content;
         }
     });
 

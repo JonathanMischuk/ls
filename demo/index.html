@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
-    <script src="../lib/ls.js"></script>
+    <script src="../versions/ls.js"></script>
 
     <style>
         form {
@@ -61,72 +61,57 @@
         content: 'This is the home page'
     },
     pagesLS = new LS({
-        endpoint: '/api/pages'
+        endpoint: '/api/pages',
+        initAs: {
+            title: 'Something Cool',
+            content: 'Integer rutrum mauris ut libero sagittis, nec placerat mauris consectetur.'
+        }
     });
 
-    pagesLS.get(function (response) {
-        if (response.error) {
-            document.getElementById('content-html').innerHTML = response.error.message;
+    pagesLS.get(function (res) {
+        if (res.error) {
+            document.getElementById('content-html').innerHTML = res.error;
         } else {
-            document.getElementById('title-html').innerHTML = response.title;
-            document.getElementById('content-html').innerHTML = response.content;
+            document.getElementById('title-html').innerHTML = res.data.title;
+            document.getElementById('content-html').innerHTML = res.data.content;
 
-            document.getElementById('title').value = response.title;
-            document.getElementById('content').value = response.content;
+            document.getElementById('title').value = res.data.title;
+            document.getElementById('content').value = res.data.content;
         }
     });
 
     document.getElementById('set').addEventListener('click', function () {
-        pagesLS.set(pagesCollection, function (pages) {
-            document.getElementById('title').value = pages.title;
-            document.getElementById('content').value = pages.content;
-            document.getElementById('title-html').innerHTML = pages.title;
-            document.getElementById('content-html').innerHTML = pages.content;
+        pagesLS.set(pagesCollection, function (res) {
+            document.getElementById('title').value = res.data.title;
+            document.getElementById('content').value = res.data.content;
+            document.getElementById('title-html').innerHTML = res.data.title;
+            document.getElementById('content-html').innerHTML = res.data.content;
         });
     });
 
     document.getElementById('remove').addEventListener('click', function () {
-        pagesLS.remove(function (response) {
-            console.log(response);
-
+        pagesLS.remove().then(function (res) {
             document.getElementById('title').value = '';
             document.getElementById('content').value = '';
             document.getElementById('title-html').innerHTML = '';
+            document.getElementById('content-html').innerHTML = 'Endpoint does not exist';
 
-            if (response.error) {
-                document.getElementById('content-html').innerHTML = response.error.message;
-            } else {
-                document.getElementById('content-html').innerHTML = 'Endpoint does not exist';
+            if (res.error) {
+                document.getElementById('content-html').innerHTML = res.error;
             }
         });
     });
 
     document.getElementById('update').addEventListener('click', function () {
-        pagesLS.get(function (response) {
-            if (response.error) {
-                var pagesCollection = {};
+        var data = {};
 
-                pagesCollection.title = document.getElementById('title').value;
-                pagesCollection.content = document.getElementById('content').value;
+        data.title = document.getElementById('title').value;
+        data.content = document.getElementById('content').value;
 
-                pagesLS.set(pagesCollection, function (response) {
-                    if (response.error) {
-                        console.log(response.error.message);
-                    } else {
-                        document.getElementById('title-html').innerHTML = response.title;
-                        document.getElementById('content-html').innerHTML = response.content;
-                    }
-                });
-            } else {
-                response.title = document.getElementById('title').value;
-                response.content = document.getElementById('content').value;
+        document.getElementById('title-html').innerHTML = data.title;
+        document.getElementById('content-html').innerHTML = data.content;
 
-                pagesLS.update();
-
-                document.getElementById('title-html').innerHTML = response.title;
-                document.getElementById('content-html').innerHTML = response.content;
-            }
-        });
+        pagesLS.set(data);
     });
 
 </script>

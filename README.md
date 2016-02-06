@@ -16,29 +16,39 @@ Call `new LS(settings)` - `settings` is an object. The `endpoint` property must 
 
 ```javascript
 var ls = new LS({
-    storageType: 'localStorage' || 'sessionStorage' // String | optional | default 'localStorage'
-    endpoint: '/api/pages'                          // String | mandatory | default undefined
-    expires: 50000                                  // Number | optional | milliseconds | default undefined
+    storageType: 'localStorage'
+    endpoint: 'StorageName'
+    expiry: {
+        length: 1,
+        format: 'days'
+    },
+    initAs: [{ something: 'Orange' }]
 });
 ```
+
+#### Settings:
+
+__storageType__: String (optional) | `'localStorage'` or `'sessionStorage'`
+__endpoint__: String (mandatory) | `'example'`, `'somethingImportant'`
+__expiry__: Object (optional)
+  __length__: Number (mandatory),
+  __format__: String (optional) | `'seconds'`, `'minutes'`, `'hours'`, `'days'`
+__initAs__: Array / Object / String / Number | `[{ somethings: 'Orange' }, 5, 'Apple']`
 
 ### Methods
 
 ```javascript
-LS.prototype.set()
-LS.prototype.check()
-LS.prototype.$get()
-LS.prototype.get() | LS.prototype.find()
-
-LS.update()
+LS.set()
 LS.remove()
 LS.getSettings()
-LS.updateInstanceStorage()
+
+LS.prototype.check()
+LS.prototype.get() | LS.prototype.find()
 ```
 
 ### Set instance and Local Storage data 
 
-* Returns a promise with storage data as value or error object
+* Returns a promise with storage data or Error object as value
 * Has optional callback function with response parameter
 
 ```javascript
@@ -51,13 +61,13 @@ something = {
 ls.set(something);
 
 // with callback function
-ls.set(something, function (response) {
-    console.log(response);    
+ls.set(something, function (res) {
+    console.log(res);    
 });
 
 // as promise
-ls.set(something).then(function (response) {
-    console.log(response);
+ls.set(something).then(function (res) {
+    console.log(res);
 });
 ```
 
@@ -68,50 +78,19 @@ ls.set(something).then(function (response) {
 
 ```javascript
 // with callback function
-ls.get(function (response) {
-    response.title = 'Something Else';
-    ls.update();
+ls.get(function (res) {
+    if (res.error) return console.log(res.error);    
+    
+    res.data.title = 'Something Else';
+    ls.set(res.data);
 });
 
 // as promise
-ls.get().then(function (response) {
-    response.title = 'Something Else';
-    return response;
-}).then(function (secondResponse) {
-    secondResponse.content = 'Some more body content for some reason';
-    ls.update();
-});
-```
-
-Convenience version - no callback or promise returned 
-
-```javascript
-var storage = ls.$get();
-```
-
-### Update instance and Local Storage data
-
-* Returns a promise with storage data as value or error object
-* Has optional callback function with storage data parameter
-
-```javascript
-ls.get(function (response) {
-    response.title = 'Something Completely Different';
-    
-    ls.update(response);
-    
-    // updates dateCreated timestamp (useful for storage with expiry)
-    ls.update(response, true);
-    
-    // with callback function
-    ls.update(response, true, function (response) {
-        console.log(response);
-    });
-    
-    // as promise
-    ls.update(response, true).then(function (response) {
-        console.log(response);
-    });    
+ls.get().then(function (res) {
+    return 'Something Else';
+}).then(function (res) {
+    res.data.title = res;
+    ls.set(res.data);
 });
 ```
     
@@ -124,13 +103,13 @@ ls.get(function (response) {
 ls.remove();
 
 // with callback function
-ls.remove(function (response) {
-    console.log(response);
+ls.remove(function (res) {
+    console.log(res);
 });
 
 // as promise
-ls.remove().then(function (response) {
-    console.log(response);
+ls.remove().then(function (res) {
+    console.log(res);
 });
 ```
 
@@ -155,7 +134,7 @@ The main data containment object has the following output:
 ```javascript
 storageItem = {
     endpoint: String,
-    dateCreated: Number,
+    timestamp: Number,
     data: Object|Array|String|Number
 }
 ```

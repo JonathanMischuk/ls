@@ -2,7 +2,7 @@
 
 A promise and callback based library.
 
-Supports objects, arrays, strings and numbers.
+Supports all data types.
 
 A modular version is in the works.
  
@@ -73,7 +73,7 @@ ls.set(something).then(function (res) {
 
 ### Get instance and Local Storage data
 
-* Returns a promise with storage data as value or error object
+* Returns a promise with storageItem object as value or error object
 * Has optional callback function with storage data parameter
 
 ```javascript
@@ -93,6 +93,18 @@ ls.get().then(function (res) {
     res.data.content = 'Some more content';
     ls.set(res.data);
 });
+```
+
+#### returned storageItem object
+
+The main data containment object has the following output:
+
+```javascript
+storageItem = {
+    endpoint: String,
+    timestamp: Number,
+    data: Object|Array|String|Number|Boolean
+}
 ```
     
 ### Remove Local Storage from browser
@@ -126,18 +138,6 @@ ls.set(something);
 
 ls.check();
 // true
-```
-
-### returned storageItem object
-
-The main data containment object has the following output:
-
-```javascript
-storageItem = {
-    endpoint: String,
-    timestamp: Number,
-    data: Object|Array|String|Number
-}
 ```
 
 ## Comments

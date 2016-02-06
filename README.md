@@ -106,6 +106,9 @@ storageItem = {
     data: Object|Array|String|Number|Boolean
 }
 ```
+
+`storageItem.data` contains the user defined value of the storage instance.
+In the above get call `res.data` contains the user defined storage value.
     
 ### Remove Local Storage from browser
 

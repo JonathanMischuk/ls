@@ -61,14 +61,15 @@
         content: 'This is the home page'
     },
     pagesLS = new LS({
-        endpoint: '/api/pages',
-        initAs: {
-            title: 'Something Cool',
-            content: 'Integer rutrum mauris ut libero sagittis, nec placerat mauris consectetur.'
-        }
+        endpoint: '/api/pages'
+    }),
+    categoriesLS = new LS({
+        endpoint: '/api/categories'
     });
 
-    pagesLS.get(function (res) {
+    console.log(LS.getInstances());
+
+    pagesLS.$get(function (res) {
         if (res.error) {
             document.getElementById('content-html').innerHTML = res.error;
         } else {
@@ -87,6 +88,8 @@
             document.getElementById('title-html').innerHTML = res.data.title;
             document.getElementById('content-html').innerHTML = res.data.content;
         });
+
+        categoriesLS.set(pagesCollection);
     });
 
     document.getElementById('remove').addEventListener('click', function () {
@@ -100,6 +103,8 @@
                 document.getElementById('content-html').innerHTML = res.error;
             }
         });
+
+        categoriesLS.remove();
     });
 
     document.getElementById('update').addEventListener('click', function () {

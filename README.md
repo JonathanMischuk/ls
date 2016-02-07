@@ -41,9 +41,10 @@ var ls = new LS({
 LS.set()
 LS.remove()
 LS.getSettings()
+LS.getInstances()
 
 LS.prototype.check()
-LS.prototype.get() | LS.prototype.find()
+LS.prototype.$get()
 ```
 
 ### Set instance and Local Storage data 
@@ -78,7 +79,7 @@ ls.set(something).then(function (res) {
 
 ```javascript
 // with callback function
-ls.get(function (res) {
+ls.$get(function (res) {
     if (res.error) return console.log(res.error);    
     
     res.data.title = 'Something Else';
@@ -86,7 +87,7 @@ ls.get(function (res) {
 });
 
 // as promise
-ls.get().then(function (res) {
+ls.$get().then(function (res) {
     res.data.title = 'Something Else'; 
     return res;
 }).then(function (res) {

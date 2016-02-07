@@ -42,9 +42,12 @@
 <script>
     var pagesLS = new LS({
         endpoint: '/api/pages'
+    }),
+    categoriesLS = new LS({
+        endpoint: '/api/categories'
     });
 
-    pagesLS.get(function (res) {
+    pagesLS.$get(function (res) {
         if (res.error) {
             document.getElementById('content-html').innerHTML = res.error.message;
         } else {

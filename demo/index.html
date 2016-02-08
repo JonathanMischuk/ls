@@ -32,7 +32,8 @@
     </nav>
 
     <a class="btn" id="set">Set</a>
-    <a class="btn" id="remove">Remove</a>
+    <a class="btn" id="remove-pages">Remove Page</a>
+    <a class="btn" id="remove-categories">Remove Categories</a>
 
     <form>
         <h6>
@@ -92,7 +93,7 @@
         categoriesLS.set(pagesCollection);
     });
 
-    document.getElementById('remove').addEventListener('click', function () {
+    document.getElementById('remove-pages').addEventListener('click', function () {
         pagesLS.remove().then(function (res) {
             document.getElementById('title').value = '';
             document.getElementById('content').value = '';
@@ -103,7 +104,9 @@
                 document.getElementById('content-html').innerHTML = res.error;
             }
         });
+    });
 
+    document.getElementById('remove-categories').addEventListener('click', function () {
         categoriesLS.remove();
     });
 

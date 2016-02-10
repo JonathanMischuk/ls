@@ -8,7 +8,7 @@ A modular version is in the works.
  
 ## Usage
 
-Add `<script src="ls-v.1.0.1.js"></script>` to your page.
+Add `<script src="ls.js"></script>` to your page.
 
 ### Initialize LS instance
 
